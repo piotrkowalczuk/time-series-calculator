@@ -3,8 +3,11 @@ SeriesProcessor = require './lib/SeriesProcessor'
 outputConverter = require './helpers/outputConverter'
 
 
-inputStream = new FileStream('./fixtures/data.txt')
-outputStream = new FileStream('./output.txt')
+inputFile = process.argv[2]
+outputFile = process.argv[3]
+
+inputStream = new FileStream(inputFile)
+outputStream = new FileStream(outputFile)
 seriesProcessor = new SeriesProcessor(60)
 
 inputStream.onOpen () ->
