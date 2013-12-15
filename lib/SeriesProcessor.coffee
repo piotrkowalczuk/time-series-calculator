@@ -15,8 +15,13 @@ class SeriesProcessor
     @data = new Collection()
 
 
+  getData: () ->
+    @data
+
+
   processData: (timestamp, value) ->
     @insertData(timestamp, value)
+    @removeUnnecesaryData()
     @processRow()
 
 
@@ -32,24 +37,23 @@ class SeriesProcessor
 
 
   processRow: () ->
-    @removeUnnecesaryData()
-
     result =
       timestamp: @currentTimestamp
       value: @currentValue
-      min: _.min(@data,  'value').value
-      max: _.max(@data, 'value').value
-      sum: _.reduce @data, (sum, row) ->
-        return sum + row.value
-      , 0
+      min: _.min(@data,  'value').value.toFixed(5)
+      max: _.max(@data, 'value').value.toFixed(5)
+      sum: _.reduce(@data, (sum, row) ->
+        sum + row.value
+      , 0).toFixed(5)
       nb: @data.length
 
     result
 
+
   removeUnnecesaryData: ()->
     minTimestamp = @currentTimestamp - @TAU
     lastIndex = @data.indexBy (row) ->
-      row.timestamp >= minTimestamp
+      row.timestamp > minTimestamp
 
     @data.splice 0, lastIndex
 

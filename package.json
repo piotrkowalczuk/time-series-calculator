@@ -1,15 +1,16 @@
 {
-    "name": "trademob",
-    "description": "Trademob - test project",
+    "name": "time-series-calculator",
+    "description": "",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
         "coffee-script": "*",
         "mocha": "*",
         "chai": "*",
-        "grunt": "~0.4.x",
-        "grunt-cli": "*",
         "gauss": "*",
         "lodash": "*"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script --recursive tests/"
     }
 }
