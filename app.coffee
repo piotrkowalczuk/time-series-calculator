@@ -15,7 +15,7 @@ inputStream.onError (error) ->
 
 inputStream.onLine (line) ->
   values = line.split /\s/g
-  processedData = seriesProcessor.processData(values[0], values[1])
+  processedData = seriesProcessor.processData(values[0], parseFloat(values[1]))
   outputStream.writeLine(outputConverter.objectToString(processedData))
 
 

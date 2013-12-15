@@ -40,10 +40,7 @@ class SeriesProcessor
       min: _.min(@data,  'value').value
       max: _.max(@data, 'value').value
       sum: _.reduce @data, (sum, row) ->
-        if typeof sum is 'number'
-          return sum + parseFloat(row.value)
-        else
-          return parseFloat(sum.value) + parseFloat(row.value)
+        return sum + row.value
       , 0
       nb: @data.length
 
