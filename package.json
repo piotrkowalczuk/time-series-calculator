@@ -1,0 +1,15 @@
+{
+    "name": "trademob",
+    "description": "Trademob - test project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "coffee-script": "*",
+        "mocha": "*",
+        "chai": "*",
+        "grunt": "~0.4.x",
+        "grunt-cli": "*",
+        "gauss": "*",
+        "lodash": "*"
+    }
+}
